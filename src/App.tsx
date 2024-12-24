@@ -1,9 +1,10 @@
 import './App.css'
+import {Button} from "@/components/ui/button.tsx";
 
 function App() {
   return (
-      <div className="bg-green-500 text-white p-4">
-        Added tailwind
+      <div>
+          <Button>Click me</Button>
       </div>
   )
 }
