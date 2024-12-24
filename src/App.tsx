@@ -2,7 +2,9 @@ import './App.css'
 
 function App() {
   return (
-      <p>hello</p>
+      <div className="bg-green-500 text-white p-4">
+        Added tailwind
+      </div>
   )
 }
 
