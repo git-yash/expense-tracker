@@ -17,7 +17,7 @@ export function Login() {
                 <h2 className="text-2xl font-bold text-center">Login</h2>
                 <CustomFormField form={form} name={'email'} label={'Email'} placeholder={'example@email.com'} />
                 <CustomFormField form={form} name={'password'} label={'Password'} placeholder={'Enter password'} type="password" />
-                <Button type="submit" className="w-full" onSubmit={() => onSubmit}>
+                <Button type="submit" className="w-full">
                     Login
                 </Button>
                 <p className="text-sm text-center">
