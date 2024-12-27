@@ -18,7 +18,7 @@ const useSignup = () => {
         },
     });
 
-    function onSubmit(values: z.infer<typeof signupSchema>) {
+    const onSubmit = (values: z.infer<typeof signupSchema>): void => {
         console.log("Signup Data:", values);
     }
 

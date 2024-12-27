@@ -16,7 +16,7 @@ const useLogin = () => {
         },
     });
 
-    function onSubmit(values: z.infer<typeof loginSchema>) {
+    const onSubmit = (values: z.infer<typeof loginSchema>): void => {
         console.log("Login Data:", values);
     }
 
