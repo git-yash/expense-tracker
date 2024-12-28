@@ -3,6 +3,8 @@ import {useForm} from "react-hook-form";
 import {zodResolver} from "@hookform/resolvers/zod";
 
 const useSignup = () => {
+
+    // TODO: remove current auth package, use AWS Amplify for auth
     const signupSchema = z.object({
         name: z.string().min(2, "Name must be at least 2 characters."),
         email: z.string().email("Invalid email address."),

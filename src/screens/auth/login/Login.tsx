@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button.tsx";
 import {
     Form,
 } from "@/components/ui/form.tsx";
-import useLogin from "@/screens/login/useLogin.ts";
+import useLogin from "@/screens/auth/login/useLogin.ts";
 import {CustomFormField} from "@/components/customComponents/form-field.tsx";
 
 export function Login() {
