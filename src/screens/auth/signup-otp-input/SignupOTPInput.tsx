@@ -5,9 +5,10 @@ import {Form, FormControl, FormDescription, FormField, FormItem, FormLabel, Form
 import {InputOTP, InputOTPGroup, InputOTPSlot,} from "@/components/ui/input-otp"
 import {REGEXP_ONLY_DIGITS} from "input-otp";
 import useSignupOTPInput from "@/screens/auth/signup-otp-input/useSignupOTPInput.ts";
+import {ErrorMessage} from "@/components/customComponents/error-message.tsx";
 
 export function SignupOTPInput() {
-    const {form, onSubmit, isLoading} = useSignupOTPInput();
+    const {form, onSubmit, isLoading, error} = useSignupOTPInput();
 
     return (
         <Form {...form}>
@@ -18,6 +19,7 @@ export function SignupOTPInput() {
                     render={({field}) => (
                         <FormItem>
                             <FormLabel>Verification Code</FormLabel>
+                            <ErrorMessage error={error}/>
                             <FormControl>
                                 <InputOTP maxLength={6} pattern={REGEXP_ONLY_DIGITS} {...field}>
                                     <InputOTPGroup>

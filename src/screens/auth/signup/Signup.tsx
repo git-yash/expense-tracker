@@ -6,14 +6,16 @@ import {Form,} from "@/components/ui/form.tsx";
 import useSignup from "@/screens/auth/signup/useSignup.ts";
 import {CustomFormField} from "@/components/customComponents/form-field.tsx";
 import ScreenConstants from "@/screens/ScreenConstants.ts";
+import {ErrorMessage} from "@/components/customComponents/error-message.tsx";
 
 export function Signup() {
-    const {form, onSubmit, isLoading} = useSignup();
+    const {form, onSubmit, isLoading, error} = useSignup();
 
     return (
         <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 max-w-md mx-auto">
                 <h2 className="text-2xl font-bold text-center">Sign Up</h2>
+                <ErrorMessage error={error}/>
                 <CustomFormField form={form} name={'name'} label={'Name'} placeholder={'Your full name'}/>
                 <CustomFormField form={form} name={'email'} label={'Email'} placeholder={'example@email.com'}/>
                 <CustomFormField form={form} name={'password'} label={'Password'} placeholder={'Create a password'}

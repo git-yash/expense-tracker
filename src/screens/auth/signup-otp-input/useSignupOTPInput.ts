@@ -12,6 +12,7 @@ const useSignupOTPInput = () => {
     const {email} = location.state || {};
     const signupOTPInputService = new SignupOTPInputService();
     const [isLoading, setIsLoading] = useState<boolean>(false);
+    const [error, setError] = useState<string | undefined>(undefined);
 
     useEffect(() => {
         console.log(email);
@@ -39,12 +40,13 @@ const useSignupOTPInput = () => {
             }
         }).catch((err) => {
             console.error(err);
+            setError(err.message);
         }).finally(() => {
             setIsLoading(false);
         })
     }
 
-    return {form, onSubmit, isLoading};
+    return {form, onSubmit, isLoading, error};
 }
 
 export default useSignupOTPInput;

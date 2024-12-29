@@ -15,6 +15,7 @@ export type signupFormData = {
 const useSignup = () => {
     const navigate = useNavigate();
     const [isLoading, setIsLoading] = useState<boolean>(false);
+    const [error, setError] = useState<string | undefined>(undefined);
 
     const signupSchema = z.object({
         name: z.string().min(2, "Name must be at least 2 characters."),
@@ -47,12 +48,13 @@ const useSignup = () => {
             navigateToNextScreen(result.signUpStep, values.email);
         }).catch(error => {
             console.error(error);
+            setError(error.message);
         }).finally(() => {
             setIsLoading(false);
         })
     }
 
-    return {form, onSubmit, isLoading};
+    return {form, onSubmit, isLoading, error};
 }
 
 export default useSignup;

@@ -2,18 +2,21 @@
 
 import {Link} from "react-router-dom";
 import {Button} from "@/components/ui/button.tsx";
-import {Form,} from "@/components/ui/form.tsx";
+import {Form} from "@/components/ui/form.tsx";
 import useLogin from "@/screens/auth/login/useLogin.ts";
 import {CustomFormField} from "@/components/customComponents/form-field.tsx";
 import ScreenConstants from "@/screens/ScreenConstants.ts";
+import {ErrorMessage} from "@/components/customComponents/error-message.tsx";
 
 export function Login() {
-    const {form, onSubmit, isLoading} = useLogin();
+    const {form, onSubmit, isLoading, error} = useLogin();
 
     return (
         <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 max-w-md mx-auto">
                 <h2 className="text-2xl font-bold text-center">Login</h2>
+
+                <ErrorMessage error={error}/>
                 <CustomFormField form={form} name={'email'} label={'Email'} placeholder={'example@email.com'}/>
                 <CustomFormField form={form} name={'password'} label={'Password'} placeholder={'Enter password'}
                                  type="password"/>

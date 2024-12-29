@@ -14,6 +14,7 @@ export type loginFormData = {
 const useLogin = () => {
     const loginService = new LoginService();
     const [isLoading, setIsLoading] = useState<boolean>(false);
+    const [error, setError] = useState<string | undefined>(undefined);
     const navigate = useNavigate();
 
     const loginSchema = z.object({
@@ -43,13 +44,14 @@ const useLogin = () => {
         loginService.login(values).then((result) => {
             navigateToNextScreen(result.signInStep, values.email)
         }).catch(error => {
-            console.error(error);
+            console.log(error)
+            setError(error.message)
         }).finally(() => {
             setIsLoading(false);
         })
     }
 
-    return {onSubmit, form, isLoading};
+    return {onSubmit, form, isLoading, error};
 }
 
 export default useLogin;
