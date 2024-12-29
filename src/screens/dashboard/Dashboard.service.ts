@@ -1,0 +1,11 @@
+import {signOut} from 'aws-amplify/auth';
+
+export default class DashboardService {
+    async signOut() {
+        return await signOut({
+            global: true
+        }).catch((err) => {
+            console.error(err);
+        })
+    }
+}
