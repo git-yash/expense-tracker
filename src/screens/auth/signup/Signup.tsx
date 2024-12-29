@@ -5,9 +5,10 @@ import {Button} from "@/components/ui/button.tsx";
 import {Form,} from "@/components/ui/form.tsx";
 import useSignup from "@/screens/auth/signup/useSignup.ts";
 import {CustomFormField} from "@/components/customComponents/form-field.tsx";
+import ScreenConstants from "@/screens/ScreenConstants.ts";
 
 export function Signup() {
-    const {form, onSubmit} = useSignup();
+    const {form, onSubmit, isLoading} = useSignup();
 
     return (
         <Form {...form}>
@@ -17,12 +18,12 @@ export function Signup() {
                 <CustomFormField form={form} name={'email'} label={'Email'} placeholder={'example@email.com'}/>
                 <CustomFormField form={form} name={'password'} label={'Password'} placeholder={'Create a password'}
                                  type="password"/>
-                <Button type="submit" className="w-full">
-                    Sign Up
+                <Button type="submit" className="w-full" disabled={isLoading}>
+                    {isLoading ? "Loading..." : "Sign up"}
                 </Button>
                 <p className="text-sm text-center">
                     Already have an account?{" "}
-                    <Link to="/" className="text-blue-500 underline">
+                    <Link to={ScreenConstants.LOGIN} className="text-blue-500 underline">
                         Log In
                     </Link>
                 </p>
