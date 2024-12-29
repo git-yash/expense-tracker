@@ -5,7 +5,7 @@ export default class DashboardService {
         return await signOut({
             global: true
         }).catch((err) => {
-            console.error(err);
+            throw err;
         })
     }
 }

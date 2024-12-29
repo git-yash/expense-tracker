@@ -15,7 +15,6 @@ export default class SignupService {
         }).then(result => {
             return result.nextStep
         }).catch(error => {
-            console.error('signup error', error);
             throw error;
         })
     }

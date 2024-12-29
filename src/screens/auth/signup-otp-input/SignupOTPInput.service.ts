@@ -8,7 +8,6 @@ export default class SignupOTPInputService {
         }).then(result => {
             return result.isSignUpComplete
         }).catch(err => {
-            console.error(err);
             throw err;
         })
     }

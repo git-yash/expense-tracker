@@ -8,7 +8,7 @@ import {CustomFormField} from "@/components/customComponents/form-field.tsx";
 import ScreenConstants from "@/screens/ScreenConstants.ts";
 
 export function Login() {
-    const {form, onSubmit} = useLogin();
+    const {form, onSubmit, isLoading} = useLogin();
 
     return (
         <Form {...form}>
@@ -17,8 +17,8 @@ export function Login() {
                 <CustomFormField form={form} name={'email'} label={'Email'} placeholder={'example@email.com'}/>
                 <CustomFormField form={form} name={'password'} label={'Password'} placeholder={'Enter password'}
                                  type="password"/>
-                <Button type="submit" className="w-full">
-                    Login
+                <Button type="submit" className="w-full" disabled={isLoading}>
+                    {isLoading ? "Loading..." : "Log in"}
                 </Button>
                 <p className="text-sm text-center">
                     Don’t have an account?{" "}

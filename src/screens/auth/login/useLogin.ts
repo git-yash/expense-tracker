@@ -1,15 +1,27 @@
 import {z} from "zod";
 import {useForm} from "react-hook-form";
 import {zodResolver} from "@hookform/resolvers/zod";
+import LoginService from "@/screens/auth/login/Login.service.ts";
+import {useState} from "react";
+import {useNavigate} from "react-router-dom";
+import ScreenConstants from "@/screens/ScreenConstants.ts";
+
+export type loginFormData = {
+    email: string;
+    password: string;
+}
 
 const useLogin = () => {
+    const loginService = new LoginService();
+    const [isLoading, setIsLoading] = useState<boolean>(false);
+    const navigate = useNavigate();
 
     const loginSchema = z.object({
         email: z.string().email("Invalid email address."),
         password: z.string().min(6, "Password must be at least 6 characters."),
     });
 
-    const form = useForm<z.infer<typeof loginSchema>>({
+    const form = useForm<loginFormData>({
         resolver: zodResolver(loginSchema),
         defaultValues: {
             email: "",
@@ -17,11 +29,27 @@ const useLogin = () => {
         },
     });
 
-    const onSubmit = (values: z.infer<typeof loginSchema>): void => {
-        console.log("Login Data:", values);
+    const navigateToNextScreen = (signInStep: string, email: string) => {
+        console.log(signInStep);
+        if (signInStep === "CONFIRM_SIGN_UP") {
+            navigate(ScreenConstants.VERIFICATION_CODE, {state: {email: email}})
+        } else if (signInStep === "DONE") {
+            navigate(ScreenConstants.DASHBOARD)
+        }
     }
 
-    return {onSubmit, form};
+    const onSubmit = (values: loginFormData): void => {
+        setIsLoading(true);
+        loginService.login(values).then((result) => {
+            navigateToNextScreen(result.signInStep, values.email)
+        }).catch(error => {
+            console.error(error);
+        }).finally(() => {
+            setIsLoading(false);
+        })
+    }
+
+    return {onSubmit, form, isLoading};
 }
 
 export default useLogin;
