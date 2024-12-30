@@ -11,11 +11,18 @@ export function ResetPassword() {
 
     return (
         <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 max-w-md mx-auto">
-                <h2 className="text-2xl font-bold text-center">Reset Password</h2>
+            <form
+                onSubmit={form.handleSubmit(onSubmit)}
+                className="space-y-8 max-w-md w-full px-4 py-6 mx-auto sm:py-8 sm:px-6 lg:max-w-lg lg:py-10"
+            >
+                <h2 className="text-xl font-bold text-center sm:text-2xl md:text-3xl">
+                    Reset Password
+                </h2>
                 {error && (
-                    <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative"
-                         role="alert">
+                    <div
+                        className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative"
+                        role="alert"
+                    >
                         <span className="block sm:inline">{error}</span>
                     </div>
                 )}
@@ -33,7 +40,11 @@ export function ResetPassword() {
                     placeholder={"Enter your new password"}
                     type="password"
                 />
-                <Button type="submit" className="w-full" disabled={isLoading}>
+                <Button
+                    type="submit"
+                    className="w-full py-2 sm:py-3 text-sm sm:text-base md:py-4"
+                    disabled={isLoading}
+                >
                     {isLoading ? "Loading..." : "Submit"}
                 </Button>
             </form>
