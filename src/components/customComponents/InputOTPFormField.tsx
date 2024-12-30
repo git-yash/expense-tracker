@@ -1,5 +1,5 @@
 import {FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage} from "@/components/ui/form.tsx";
-import {ErrorMessage} from "@/components/customComponents/error-message.tsx";
+import {ErrorMessage} from "@/components/customComponents/ErrorMessage.tsx";
 import {InputOTP, InputOTPGroup, InputOTPSlot} from "@/components/ui/input-otp.tsx";
 import {REGEXP_ONLY_DIGITS} from "input-otp";
 

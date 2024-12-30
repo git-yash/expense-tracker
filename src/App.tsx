@@ -3,7 +3,7 @@
 import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
 import {Login} from "@/screens/auth/login/Login.tsx";
 import {Signup} from "@/screens/auth/signup/Signup.tsx";
-import {OTPInput} from "@/screens/auth/signup-otp-input/OTPInput.tsx";
+import {OTPInput} from "@/screens/auth/otp-input/OTPInput.tsx";
 import ScreenConstants from "@/screens/ScreenConstants.ts";
 import {Dashboard} from "@/screens/dashboard/dashboard.tsx";
 import {Amplify} from "aws-amplify";

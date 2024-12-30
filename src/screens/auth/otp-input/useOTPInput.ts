@@ -1,7 +1,7 @@
 import {useForm} from "react-hook-form";
 import {z} from "zod";
 import {zodResolver} from "@hookform/resolvers/zod";
-import OTPInputService from "@/screens/auth/signup-otp-input/OTPInput.service.ts";
+import OTPInputService from "@/screens/auth/otp-input/OTPInput.service.ts";
 import {useState} from "react";
 import {useLocation, useNavigate} from "react-router-dom";
 import ScreenConstants from "@/screens/ScreenConstants.ts";

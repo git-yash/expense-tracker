@@ -2,10 +2,10 @@
 
 import {Form} from "@/components/ui/form";
 import {Button} from "@/components/ui/button";
-import {CustomFormField} from "@/components/customComponents/form-field";
+import {CustomFormField} from "@/components/customComponents/FormField.tsx";
 import {InputOTPFormField} from "@/components/customComponents/InputOTPFormField";
 import useResetPassword from "@/screens/auth/reset-password/useResetPassword.ts";
-import {ErrorMessage} from "@/components/customComponents/error-message.tsx";
+import {ErrorMessage} from "@/components/customComponents/ErrorMessage.tsx";
 
 export function ResetPassword() {
     const {form, onSubmit, isLoading, error, email} = useResetPassword();

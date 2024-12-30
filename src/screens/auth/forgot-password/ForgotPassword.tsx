@@ -3,9 +3,9 @@
 import {Link} from "react-router-dom";
 import {Button} from "@/components/ui/button.tsx";
 import {Form} from "@/components/ui/form.tsx";
-import {CustomFormField} from "@/components/customComponents/form-field.tsx";
+import {CustomFormField} from "@/components/customComponents/FormField.tsx";
 import ScreenConstants from "@/screens/ScreenConstants.ts";
-import {ErrorMessage} from "@/components/customComponents/error-message.tsx";
+import {ErrorMessage} from "@/components/customComponents/ErrorMessage.tsx";
 import useForgotPassword from "@/screens/auth/forgot-password/useForgotPassword.ts";
 
 export function ForgotPassword() {

@@ -2,7 +2,7 @@
 
 import {Button} from "@/components/ui/button"
 import {Form,} from "@/components/ui/form"
-import useOTPInput from "@/screens/auth/signup-otp-input/useOTPInput.ts";
+import useOTPInput from "@/screens/auth/otp-input/useOTPInput.ts";
 import {InputOTPFormField} from "@/components/customComponents/InputOTPFormField.tsx";
 
 export function OTPInput() {
