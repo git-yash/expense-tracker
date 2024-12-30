@@ -5,6 +5,7 @@ import {Button} from "@/components/ui/button";
 import {CustomFormField} from "@/components/customComponents/form-field";
 import {InputOTPFormField} from "@/components/customComponents/InputOTPFormField";
 import useResetPassword from "@/screens/auth/reset-password/useResetPassword.ts";
+import {ErrorMessage} from "@/components/customComponents/error-message.tsx";
 
 export function ResetPassword() {
     const {form, onSubmit, isLoading, error, email} = useResetPassword();
@@ -18,14 +19,7 @@ export function ResetPassword() {
                 <h2 className="text-xl font-bold text-center sm:text-2xl md:text-3xl">
                     Reset Password
                 </h2>
-                {error && (
-                    <div
-                        className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative"
-                        role="alert"
-                    >
-                        <span className="block sm:inline">{error}</span>
-                    </div>
-                )}
+                <ErrorMessage error={error}/>
                 <InputOTPFormField
                     form={form}
                     error={error}
