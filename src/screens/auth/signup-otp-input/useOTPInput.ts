@@ -1,26 +1,22 @@
 import {useForm} from "react-hook-form";
 import {z} from "zod";
 import {zodResolver} from "@hookform/resolvers/zod";
-import SignupOTPInputService from "@/screens/auth/signup-otp-input/SignupOTPInput.service.ts";
-import {useEffect, useState} from "react";
+import OTPInputService from "@/screens/auth/signup-otp-input/OTPInput.service.ts";
+import {useState} from "react";
 import {useLocation, useNavigate} from "react-router-dom";
 import ScreenConstants from "@/screens/ScreenConstants.ts";
 
-const useSignupOTPInput = () => {
+const useOTPInput = () => {
     const location = useLocation();
     const navigate = useNavigate();
     const {email} = location.state || {};
-    const signupOTPInputService = new SignupOTPInputService();
+    const signupOTPInputService = new OTPInputService();
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [error, setError] = useState<string | undefined>(undefined);
 
-    useEffect(() => {
-        console.log(email);
-    })
-
     const inputSchema = z.object({
         pin: z.string().min(6, {
-            message: "Your one-time password must be 6 characters.",
+            message: "Your code must be at least 6 digits.",
         }),
     })
 
@@ -49,4 +45,4 @@ const useSignupOTPInput = () => {
     return {form, onSubmit, isLoading, error};
 }
 
-export default useSignupOTPInput;
+export default useOTPInput;

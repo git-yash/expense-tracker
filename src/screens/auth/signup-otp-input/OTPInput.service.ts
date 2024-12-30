@@ -1,6 +1,6 @@
 import {confirmSignUp} from 'aws-amplify/auth';
 
-export default class SignupOTPInputService {
+export default class OTPInputService {
     async confirmWithCode(email: string, code: string): Promise<boolean> {
         return await confirmSignUp({
             username: email,
