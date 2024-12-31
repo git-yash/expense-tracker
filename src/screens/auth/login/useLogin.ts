@@ -12,7 +12,6 @@ export type loginFormData = {
 }
 
 const useLogin = () => {
-    // TODO: implement forgot password
     const loginService = new LoginService();
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [error, setError] = useState<string | undefined>(undefined);
@@ -32,7 +31,6 @@ const useLogin = () => {
     });
 
     const navigateToNextScreen = (signInStep: string, email: string) => {
-        console.log(signInStep);
         if (signInStep === "CONFIRM_SIGN_UP") {
             navigate(ScreenConstants.VERIFICATION_CODE, {state: {email: email}})
         } else if (signInStep === "DONE") {
@@ -45,7 +43,7 @@ const useLogin = () => {
         loginService.login(values).then((result) => {
             navigateToNextScreen(result.signInStep, values.email)
         }).catch(error => {
-            console.log(error)
+            console.error(error)
             setError(error.message)
         }).finally(() => {
             setIsLoading(false);

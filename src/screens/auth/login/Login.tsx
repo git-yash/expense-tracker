@@ -13,9 +13,8 @@ export function Login() {
 
     return (
         <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 max-w-md mx-auto">
+            <form role="form" onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 max-w-md mx-auto">
                 <h2 className="text-2xl font-bold text-center">Login</h2>
-
                 <ErrorMessage error={error}/>
                 <CustomFormField
                     form={form}
