@@ -1,12 +1,12 @@
-import amplifyConfig from "../amplify_outputs.json";
+import * as process from "node:process";
 
 export const awsConfig = {
-    aws_project_region: amplifyConfig.auth.aws_region,
-    aws_cognito_identity_pool_id: amplifyConfig.auth.identity_pool_id,
-    aws_cognito_region: amplifyConfig.auth.aws_region,
-    aws_user_pools_id: amplifyConfig.auth.user_pool_id,
-    aws_user_pools_web_client_id: amplifyConfig.auth.user_pool_client_id,
-    aws_appsync_graphqlEndpoint: amplifyConfig.data.url,
-    aws_appsync_region: amplifyConfig.data.aws_region,
-    aws_appsync_authenticationType: amplifyConfig.data.default_authorization_type,
+    aws_project_region: process.env.REACT_APP_REGION,
+    aws_cognito_identity_pool_id: process.env.REACT_APP_IDENTITY_POOL_ID,
+    aws_cognito_region: process.env.REACT_APP_REGION,
+    aws_user_pools_id: process.env.REACT_APP_USER_POOL_ID,
+    aws_user_pools_web_client_id: process.env.REACT_APP_USER_POOL_CLIENT_ID,
+    aws_appsync_graphqlEndpoint: process.env.REACT_APP_APP_SYNC_URL,
+    aws_appsync_region: process.env.REACT_APP_REGION,
+    aws_appsync_authenticationType: process.env.REACT_APP_AUTHENTICATION_TYPE,
 };
