@@ -10,14 +10,10 @@ import {Amplify} from "aws-amplify";
 import {awsConfig} from "@/aws-config.ts";
 import {ForgotPassword} from "@/screens/auth/forgot-password/ForgotPassword.tsx";
 import {ResetPassword} from "@/screens/auth/reset-password/ResetPassword.tsx";
-import {useEffect} from "react";
 
 Amplify.configure(awsConfig);
 
 export default function App() {
-    useEffect(() => {
-        console.log(awsConfig);
-    })
     return (
         <Router>
             <div className="min-h-screen flex items-center justify-center bg-gray-100">
