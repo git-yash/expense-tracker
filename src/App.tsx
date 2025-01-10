@@ -16,7 +16,7 @@ Amplify.configure(awsConfig);
 export default function App() {
     return (
         <Router>
-            <div className="min-h-screen flex items-center justify-center bg-gray-100">
+            <div className="min-h-screen flex justify-center bg-gray-100">
                 <Routes>
                     <Route path={ScreenConstants.LOGIN} element={<Login/>}/>
                     <Route path={ScreenConstants.SIGNUP} element={<Signup/>}/>

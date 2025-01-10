@@ -1,12 +1,12 @@
-import {Button} from "@/components/ui/button.tsx";
 import useDashboard from "./useDashboard";
+import {NavigationBar} from "@/components/customComponents/NavigationBar.tsx";
 
 export function Dashboard() {
     const {signOut, loading} = useDashboard();
 
     return (
-        <Button onClick={() => signOut()} disabled={loading}>
-            Sign Out
-        </Button>
+        <div className={'flex-1'}>
+            <NavigationBar signOut={signOut} loading={loading}/>
+        </div>
     );
 }
