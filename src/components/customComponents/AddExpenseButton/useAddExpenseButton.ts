@@ -16,6 +16,7 @@ const useAddExpenseButton = () => {
                 message: "Amount must be between $0.01 and $100,000",
             }),
         category: z.string().nonempty("Category is required"),
+        date: z.date().refine((value) => !!value, "Date is required"),
     });
     const {
         handleSubmit,
@@ -29,6 +30,7 @@ const useAddExpenseButton = () => {
             description: "",
             amount: "",
             category: "",
+            date: null
         },
     });
 

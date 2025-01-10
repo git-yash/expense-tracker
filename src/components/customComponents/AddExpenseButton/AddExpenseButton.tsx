@@ -1,5 +1,5 @@
 import {Controller} from "react-hook-form";
-import {Popover, PopoverContent, PopoverTrigger} from "@/components/ui/popover.tsx";
+import {Dialog, DialogContent, DialogTrigger} from "@/components/ui/dialog.tsx"; // Import Dialog components
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faPlus} from "@fortawesome/free-solid-svg-icons";
 import {Card, CardContent, CardDescription, CardHeader, CardTitle} from "@/components/ui/card.tsx";
@@ -9,18 +9,20 @@ import {Select, SelectContent, SelectItem, SelectTrigger, SelectValue} from "@/c
 import {Button} from "@/components/ui/button.tsx";
 import useAddExpenseButton from "@/components/customComponents/AddExpenseButton/useAddExpenseButton.ts";
 import {Textarea} from "@/components/ui/textarea.tsx";
-
+import {DatePicker} from "@/components/customComponents/DatePicker.tsx";
 
 export function AddExpenseButton() {
     const {expenseCategories, open, setOpen, onSubmit, handleSubmit, control, errors} = useAddExpenseButton();
 
     return (
-        <Popover open={open} onOpenChange={(isOpen) => setOpen(isOpen)}>
-            <PopoverTrigger className="bg-black text-white p-2 pl-3 pr-3 rounded-md m-3">
-                <FontAwesomeIcon icon={faPlus}/>
-            </PopoverTrigger>
-            <PopoverContent onInteractOutside={(event) => event.preventDefault()} className="invisible p-1">
-                <Card className="visible w-[350px]">
+        <Dialog open={open} onOpenChange={(isOpen) => setOpen(isOpen)}>
+            <DialogTrigger asChild>
+                <Button className="bg-black text-white p-2 pl-3 pr-3 rounded-md m-3">
+                    <FontAwesomeIcon icon={faPlus}/>
+                </Button>
+            </DialogTrigger>
+            <DialogContent className="max-w-lg w-full invisible">
+                <Card className="w-full visible bg-white rounded-lg">
                     <CardHeader>
                         <CardTitle>Create Expense</CardTitle>
                         <CardDescription>Add your expenses for today!</CardDescription>
@@ -63,14 +65,14 @@ export function AddExpenseButton() {
                                     )}
                                 </div>
                                 <div className="flex flex-col space-y-1.5">
-                                    <Label htmlFor="amount">Amount ($)</Label>
+                                    <Label htmlFor="amount">Amount</Label>
                                     <Controller
                                         name="amount"
                                         control={control}
                                         render={({field}) => (
                                             <Input
                                                 id="amount"
-                                                placeholder="XX.XX"
+                                                placeholder="$XX.XX"
                                                 {...field}
                                                 className={errors.amount ? "border-red-500" : ""}
                                             />
@@ -101,6 +103,22 @@ export function AddExpenseButton() {
                                     {errors.category &&
                                         <p className="text-red-500 text-sm">{errors.category.message}</p>}
                                 </div>
+                                <div className="flex flex-col space-y-1.5">
+                                    <Label htmlFor="date">Date</Label>
+                                    <Controller
+                                        name="date"
+                                        control={control}
+                                        render={({field}) => (
+                                            <DatePicker
+                                                {...field}
+                                                onChange={(value) => field.onChange(value)}
+                                                value={field.value}
+                                                className={errors.date ? "border-red-500" : ""}
+                                            />
+                                        )}
+                                    />
+                                    {errors.date && <p className="text-red-500 text-sm">{errors.date.message}</p>}
+                                </div>
                             </div>
                             <div className="flex justify-between mt-4">
                                 <Button type="button" variant="outline" onClick={() => setOpen(false)}>
@@ -111,7 +129,7 @@ export function AddExpenseButton() {
                         </form>
                     </CardContent>
                 </Card>
-            </PopoverContent>
-        </Popover>
+            </DialogContent>
+        </Dialog>
     );
 }
